@@ -45,38 +45,18 @@
                 <button onclick="verificarPlataforma()">Verificar</button>
             </section>
 
-            <!-- BLOCO DE MONETIZAÇÃO 1 (PREPARADO PARA BANNERS ADSTERRA) -->
-            <div class="bloco-anuncio">
-                <p class="anuncio-label">Publicidade / Educação Financeira</p>
-               
-            <div class="container-adsense-real">
-                <div id="adsterra-banner" style="width: 100%; text-align: center; min-height: 60px; position: relative; z-index: 999; clear: both; margin: 15px 0;">
-                    <script type="text/javascript">
-                        (function() {
-                            var atOptions = {
-                                'key' : '0229bc22de08364e2d35eb76919076d6',
-                                'format' : 'iframe',
-                                'height' : 60,
-                                'width' : 468,
-                                'params' : {}
-                            };
-                            var container = document.getElementById('adsterra-banner');
-                            var script = document.createElement('script');
-                            var confScript = document.createElement('script');
-                           
-                            confScript.type = 'text/javascript';
-                            confScript.innerHTML = 'atOptions = ' + JSON.stringify(atOptions) + ';';
-                           
-                            script.type = 'text/javascript';
-                            script.src = 'https://highperformanceformat.com';
-                           
-                            if (container) {
-                                container.appendChild(confScript);
-                                container.appendChild(script);
-                            }
-                        })();
-                    </script>
-                </div>
+            <!-- BANNER ADSTERRA EM CAMADA ISOLADA INDEPENDENTE -->
+            <div style="width: 100%; display: flex; justify-content: center; margin: 20px 0; clear: both; position: relative; z-index: 99999;">
+                <iframe
+                    src="./anuncio-isolado.html"
+                    width="468"
+                    height="60"
+                    scrolling="no"
+                    frameborder="0"
+                    style="border: none; overflow: hidden; background: transparent; min-height: 60px; min-width: 468px;"
+                    loading="lazy">
+                </iframe>
+            </div>
 
             <!-- -- Mensagem Alternativa (Será coberta pelo banner ou exibida caso usem adBlock) -- -->
             <div class="banner-educativo-reserva">
