@@ -1,0 +1,158 @@
+<!DOCTYPE TYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica Bet - Validador de Plataformas Oficiais</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <!-- MODAL DOS TERMOS DE RESPONSABILIDADE E TRAVA DE MAIORIDADE -->
+    <div id="modalTermos" class="modal-container">
+        <div class="modal-conteudo">
+            <h2>▲ Termos de Uso, Maioridade e Isenção de Responsabilidade</h2>
+           
+            <div class="texto-termos">
+                <p><strong>1. Restrição de Idade:</strong> Este sistema destina-se exclusivamente a maiores de 18 anos. Jogos de azar e apostas são proibidos para menores de idade conforme a legislação brasileira vigente.</p>
+                <p><strong>2. Natureza Informativa:</strong> Este sistema é uma ferramenta estritamente informativa que compila dados públicos fornecidos pelo Ministério da Fazenda do Brasil e relatos da comunidade.</p>
+                <p><strong>3. Não Incentivo ao Jogo:</strong> A validação de uma plataforma como "Regularizada" significa apenas que ela possui autorização legal para operar. Isso NÃO constitui recomendação de uso, incentivo ao jogo ou garantia de lucros. Jogos de azar são atividades de alto risco financeiro e de saúde mental.</p>
+                <p><strong>4. Isenção de Danos:</strong> Os idealizadores deste sistema não se responsabilizam por perdas financeiras, danos psicológicos ou quaisquer prejuízos decorrentes do uso de plataformas de apostas aqui listadas.</p>
+                <p><strong>5. Atualização de Dados:</strong> O mercado digital muda rapidamente. Embora busquemos manter o banco de dados atualizado, o usuário deve verificar o status oficial nos canais governamentais.</p>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="chkMaioridade" onchange="verificarCheckbox()">
+                <label for="chkMaioridade">Declaro que sou maior de 18 anos e que li e aceito integralmente os Termos de Responsabilidade acima.</label>
+            </div>
+
+            <button id="btnAceitar" onclick="aceitarTermos()" disabled>Entrar no Sistema</button>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL DO SITE (LIBERADO APÓS ACEITE) -->
+    <div id="conteudoPrincipal" class="conteudo-oculto">
+        <header>
+            <h1>Verifica Bet</h1>
+            <p>Consulte a legalidade e veja os alertas reais de risco de plataformas de jogos online</p>
+        </header>
+
+        <main>
+            <!-- BARRA DE PESQUISA -->
+            <section class="busca-container">
+                <input type="text" id="inputBusca" placeholder="Digite o nome ou cole o link da plataforma (ex: vaidebet.bet.br)...">
+                <button onclick="verificarPlataforma()">Verificar</button>
+            </section>
+
+            <!-- BLOCO DE MONETIZAÇÃO 1 (PREPARADO PARA BANNERS ADSTERRA) -->
+            <div class="bloco-anuncio">
+                <p class="anuncio-label">Publicidade / Educação Financeira</p>
+               
+            <div class="container-adsense-real">
+                <div id="adsterra-banner" style="width: 100%; text-align: center; min-height: 60px;"></div>
+            </div>
+
+            <!-- -- Mensagem Alternativa (Será coberta pelo banner ou exibida caso usem adBlock) -- -->
+            <div class="banner-educativo-reserva">
+                <p><strong>💡 DICA DE SEGURANÇA FINANCEIRA:</strong> Nunca jogue valores destinados ao seu sustento básico.</p>
+            </div>
+
+            <!-- ÁREA DE EXIBIÇÃO DOS RESULTADOS -->
+            <section id="areaResultado" class="resultado-container"></section>
+
+            <!-- ESPAÇO DE MONETIZAÇÃO 2 E LEADS JURÍDICOS -->
+            <section class="comunidade-section">
+                <h3>Relatos da Comunidade & Ajuda</h3>
+                <p>Foi lesado por alguma plataforma pirata ou está enfrentando dificuldades graves com saques?</p>
+               
+                <div class="formulario-leads">
+                    <h4>Solicitar Orientação de Suporte Jurídico</h4>
+                    <input type="text" placeholder="Seu Nome">
+                    <input type="email" placeholder="Seu E-mail ou WhatsApp">
+                    <textarea placeholder="Descreva brevemente o problema enfrentado com a plataforma..."></textarea>
+                    <button type="button" onclick="alert('Relato enviado com sucesso! Nossa equipe jurídica analisará o caso.')">Enviar Relato</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- ESPAÇO DE UTILIDADE PÚBLICA -->
+        <div class="ajuda-urgente">
+            <p><strong>AJUDA GRATUITA:</strong> Está sofrendo com problemas de vício em jogos? Ligue para o <strong>CVV</strong> no número 188.</p>
+        </div>
+
+        <footer>
+            <div class="links-oficiais">
+                <a href="https://fazenda.gov.br" target="_blank">Fonte: SIGAP / Ministério da Fazenda</a> |
+                <a href="https://www.gov.br" target="_blank">Denúncias: Polícia Federal</a>
+            </div>
+        </footer>
+
+        <!-- ELEMENTOS DA LISTA MANUAL INTEGRADOS DE FORMA SEGURA -->
+        <button id="btnAbrirLista" class="btn-flutuante">📋 Ver Lista Completa</button>
+
+        <div id="painelLateral" class="painel-lateral">
+            <div class="painel-header">
+                <h3>Plataformas Regulamentadas</h3>
+                <button id="btnFecharLista" class="btn-fechar">&times;</button>
+            </div>
+            <div id="listaContainer" class="lista-container"></div>
+        </div>
+
+    </div> <!-- FIM DO CONTEÚDO PRINCIPAL -->
+
+    <!-- BANCO DE DADOS EM LOTES LEVES -->
+    <script src="db_lote1.js"></script>
+    <script src="db_lote2.js"></script>
+    <script src="db_lote3.js"></script>
+    <script src="db_lote4.js"></script>
+    <script src="db_lote5.js"></script>
+    <script src="db_lote6.js"></script>
+    <script src="db_lote7.js"></script>
+    <script src="db_lote8.js"></script>
+    <script src="db_lote9.js"></script>
+    <script src="db_lote10.js"></script>
+    <script src="db_lote11.js"></script>
+    <script src="db_lote12.js"></script>
+    <script src="db_lote13.js"></script>
+    <script src="db_lote14.js"></script>
+    <script src="db_lote15.js"></script>
+    <script src="db_lote16.js"></script>
+    <script src="db_lote17.js"></script>
+    <script src="db_lote18.js"></script>
+    <script src="db_lote19.js"></script>
+    <script src="db_lote20.js"></script>
+    <script src="db_lote21.js"></script>
+    <script src="db_lote22.js"></script>
+    <script src="db_lote23.js"></script>
+    <script src="db_lote24.js"></script>
+    <script src="db_lote25.js"></script>
+    <script src="db_lote26.js"></script>
+    <script src="db_lote27.js"></script>
+    <script src="db_lote28.js"></script>
+    <script src="db_lote29.js"></script>
+    <script src="db_lote30.js"></script>
+    <script src="db_lote31.js"></script>
+    <script src="db_lote32.js"></script>
+    <script src="db_lote33.js"></script>
+    <script src="db_lote34.js"></script>
+    <script src="db_lote35.js"></script>
+   
+    <!-- MOTORES E SCRIPTS DE EXECUÇÃO -->
+    <script src="pirata_data.js"></script>
+    <script src="database.js"></script>
+    <script src="cards.js"></script>
+    <script src="app.js"></script>
+    <script src="anuncios.js"></script>
+
+    <!-- -- MOTOR DE INSTALAÇÃO DO APLICATIVO -- -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log('Aplicativo pronto para instalar!'))
+                .catch((err) => console.error('Erro no PWA:', err));
+        }
+    </script>
+    
+</body>
+</html>

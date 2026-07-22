@@ -1,0 +1,370 @@
+/* ARQUIVO: style.css - DESIGN E CORES */
+:root {
+    --fundo-principal: #0d1117;
+    --fundo-card: #161b22;
+    --texto-claro: #f0f6fc;
+    --texto-escuro: #8b949e;
+    --cor-verde: #238636;
+    --cor-vermelho: #da3637;
+    --cor-amarelo: #d29922;
+    --borda-padrao: #30363d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--fundo-principal);
+    color: var(--texto-claro);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* JANELA DE BLOQUEIO INICIAL (+18 E TERMOS) */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-conteudo {
+    background-color: var(--fundo-card);
+    border: 2px solid var(--borda-padrao);
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.modal-conteudo h2 {
+    color: var(--cor-amarelo);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.texto-termos {
+    background-color: var(--fundo-principal);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 6px;
+    padding: 15px;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #c9d1d9;
+}
+
+.texto-termos p {
+    margin-bottom: 12px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.checkbox-container input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    font-size: 0.9rem;
+    color: var(--texto-claro);
+    user-select: none;
+}
+
+#btnAceitar {
+    width: 100%;
+    background-color: var(--cor-verde);
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#btnAceitar:disabled {
+    background-color: #21262d;
+    color: var(--texto-escuro);
+    cursor: not-allowed;
+    border: 1px solid var(--borda-padrao);
+}
+
+/* GERENCIAMENTO DE EXIBIÇÃO */
+.conteudo-oculto {
+    display: none !important;
+}
+
+#conteudoPrincipal {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--texto-claro);
+    letter-spacing: 1px;
+}
+
+header p {
+    color: var(--texto-escuro);
+    font-size: 1.1rem;
+}
+
+/* BARRA DE PESQUISA */
+.busca-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.busca-container input {
+    flex: 1;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 6px;
+    padding: 15px;
+    color: var(--texto-claro);
+    font-size: 1rem;
+    outline: none;
+}
+
+.busca-container input:focus {
+    border-color: #58a6ff;
+}
+
+.busca-container button {
+    background-color: #21262d;
+    color: var(--texto-claro);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 6px;
+    padding: 0 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.busca-container button:hover {
+    background-color: #30363d;
+    border-color: #8b949e;
+}
+
+/* BLOCOS DE MONETIZAÇÃO */
+.bloco-anuncio {
+    background-color: var(--fundo-card);
+    border: 1px dashed var(--borda-padrao);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.anuncio-label {
+    font-size: 0.75rem;
+    color: var(--texto-escuro);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.banner-simulado {
+    background-color: var(--fundo-principal);
+    padding: 20px;
+    color: var(--texto-escuro);
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+/* CARDS DE DIAGNÓSTICO */
+.resultado-container {
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: var(--fundo-card);
+    border-radius: 8px;
+    padding: 25px;
+    border-left: 6px solid var(--borda-padrao);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.card a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.card-verde { border-left-color: var(--cor-verde); }
+.card-vermelho { border-left-color: var(--cor-vermelho); }
+.card-amarelo { border-left-color: var(--cor-amarelo); }
+
+.alertas-sociais, .alerta-critico {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--borda-padrao);
+}
+
+.alertas-sociais h3 {
+    font-size: 1.1rem;
+    color: var(--cor-amarelo);
+    margin-bottom: 10px;
+}
+
+.bloco-afiliado-seguranca {
+    margin-top: 20px;
+    background-color: rgba(218, 54, 55, 0.1);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(218, 54, 55, 0.3);
+}
+
+.btn-afiliado {
+    display: inline-block;
+    background-color: var(--cor-vermelho);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* FORMULÁRIO DE LEADS JURÍDICOS */
+.comunidade-section {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+.comunidade-section h3 {
+    margin-bottom: 10px;
+}
+
+.formulario-leads {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formulario-leads h4 {
+    font-size: 1rem;
+    color: var(--texto-claro);
+}
+
+.formulario-leads input, .formulario-leads textarea {
+    background-color: var(--fundo-principal);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 6px;
+    padding: 12px;
+    color: var(--texto-claro);
+    outline: none;
+}
+
+.formulario-leads textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.formulario-leads button {
+    background-color: #21262d;
+    color: var(--texto-claro);
+    border: 1px solid var(--borda-padrao);
+    border-radius: 6px;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RODAPÉ SOCIEDADE E SAÚDE */
+footer {
+    border-top: 1px solid var(--borda-padrao);
+    padding: 30px 20px;
+    text-align: center;
+    background-color: var(--fundo-card);
+    margin-top: auto;
+}
+
+.ajuda-urgente {
+    background-color: rgba(210, 153, 34, 0.1);
+    border: 1px solid rgba(210, 153, 34, 0.3);
+    padding: 15px;
+    border-radius: 6px;
+    max-width: 760px;
+    margin: 0 auto 20px auto;
+}
+
+.ajuda-urgente p {
+    font-size: 0.95rem;
+    color: #e3b341;
+}
+
+.links-oficiais a {
+    color: var(--texto-escuro);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.links-oficiais a:hover {
+    color: var(--texto-claro);
+}
+
+@media (max-width: 600px) {
+    .busca-container {
+        flex-direction: column;
+    }
+    .busca-container button {
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}
