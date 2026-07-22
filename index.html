@@ -45,19 +45,6 @@
                 <button onclick="verificarPlataforma()">Verificar</button>
             </section>
 
-            <!-- BANNER ADSTERRA EM CAMADA ISOLADA INDEPENDENTE -->
-            <div style="width: 100%; display: flex; justify-content: center; margin: 20px 0; clear: both; position: relative; z-index: 99999;">
-                <iframe
-                    src="./anuncio-isolado.html"
-                    width="468"
-                    height="60"
-                    scrolling="no"
-                    frameborder="0"
-                    style="border: none; overflow: hidden; background: transparent; min-height: 60px; min-width: 468px;"
-                    loading="lazy">
-                </iframe>
-            </div>
-
             <!-- ÁREA DE EXIBIÇÃO DOS RESULTADOS -->
             <section id="areaResultado" class="resultado-container"></section>
 
@@ -153,6 +140,37 @@
                 .catch((err) => console.error('Erro no PWA:', err));
         }
     </script>
+        <!-- FITA DE PUBLICIDADE FLUTUANTE FIXA NO RODAPÉ (BLINDADA) -->
+    <div id="fita-flutuante-adsterra" style="position: fixed !important; bottom: 0 !important; left: 0 !important; width: 100% !important; height: 60px !important; z-index: 999999999 !important; background-color: rgba(11, 14, 20, 0.95) !important; display: flex !important; justify-content: center !important; align-items: center !important; box-shadow: 0 -3px 10px rgba(0,0,0,0.5) !important; padding: 5px 0 !important;">
+        <div id="adsterra-sticky-box" style="width: 468px !important; height: 60px !important; max-width: 100% !important;">
+            <script type="text/javascript">
+                (function() {
+                    var atOptions = {
+                        'key' : '0229bc22de08364e2d35eb76919076d6',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                    };
+                    var container = document.getElementById('adsterra-sticky-box');
+                    var confScript = document.createElement('script');
+                    confScript.type = 'text/javascript';
+                    confScript.innerHTML = 'atOptions = ' + JSON.stringify(atOptions) + ';';
+                    container.appendChild(confScript);
+    
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = 'https://highperformanceformat.com';
+                    container.appendChild(script);
+                })();
+            </script>
+        </div>
+    </div>
+    
+    <!-- Margem de segurança para o conteúdo do site não ficar escondido atrás da fita -->
+    <style>
+        body { padding-bottom: 80px !important; }
+    </style>
     
 </body>
 </html>
