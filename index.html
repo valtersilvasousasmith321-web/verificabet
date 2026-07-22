@@ -50,8 +50,33 @@
                 <p class="anuncio-label">Publicidade / Educação Financeira</p>
                
             <div class="container-adsense-real">
-                <div id="adsterra-banner" style="width: 100%; text-align: center; min-height: 60px;"></div>
-            </div>
+                <div id="adsterra-banner" style="width: 100%; text-align: center; min-height: 60px; position: relative; z-index: 999; clear: both; margin: 15px 0;">
+                    <script type="text/javascript">
+                        (function() {
+                            var atOptions = {
+                                'key' : '0229bc22de08364e2d35eb76919076d6',
+                                'format' : 'iframe',
+                                'height' : 60,
+                                'width' : 468,
+                                'params' : {}
+                            };
+                            var container = document.getElementById('adsterra-banner');
+                            var script = document.createElement('script');
+                            var confScript = document.createElement('script');
+                           
+                            confScript.type = 'text/javascript';
+                            confScript.innerHTML = 'atOptions = ' + JSON.stringify(atOptions) + ';';
+                           
+                            script.type = 'text/javascript';
+                            script.src = 'https://highperformanceformat.com';
+                           
+                            if (container) {
+                                container.appendChild(confScript);
+                                container.appendChild(script);
+                            }
+                        })();
+                    </script>
+                </div>
 
             <!-- -- Mensagem Alternativa (Será coberta pelo banner ou exibida caso usem adBlock) -- -->
             <div class="banner-educativo-reserva">
