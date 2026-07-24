@@ -17,7 +17,7 @@ window.LOTE_OFICIAIS.push(
         nome: "BC.Game",
         radical: "bcgame",
         dominioOficial: "bcgame.bet.br",
-        linkAfiliado: "https://seu-link-aqui.com",
+        linkAfiliado: "https://playglobal9.com/i-98c357r7r2-n/",
         status: "Regularizada",
         cnpj: "50.987.654/0001-11",
         autorizacao: "Processo SPA/MF nº 037/2024",
