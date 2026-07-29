@@ -1,6 +1,5 @@
-// Este arquivo roda escondido no servidor da Vercel e ninguém consegue ver o código dele pelo navegador
+// api/criar-cobranca.js (Versão com cadastro automático de cliente)
 export default async function handler(req, res) {
-    // Configurações de segurança para o seu site funcionar
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -16,20 +15,41 @@ export default async function handler(req, res) {
 
     const { valor, nomePlano } = req.body;
    
-    // ESTA É A SUA CHAVE DO ASAAS PROTEGIDA QUE VOCÊ PASSOU
+    // SUA CHAVE DO ASAAS
     const ASAAS_KEY = '$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmRhNTUxZDU3LTNmMmQtNDk3MS05NDZkLTI2MDkwOWY5YzI3Zjo6JGFhY2hfN2U2MzFmMDItMGQ5NS00NWQwLTk4ZDgtMDg0ZmVjOGJiMzA3';
-    const ASAAS_URL = 'https://asaas.com';
 
     try {
-        // 1. Cria a cobrança no sistema do Asaas
-        const responseCobranca = await fetch(ASAAS_URL, {
+        // PASSO 1: O CÓDIGO CRIA O CLIENTE AUTOMATICAMENTE NO SEU ASAAS
+        const responseCliente = await fetch('https://asaas.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'access_token': ASAAS_KEY
             },
             body: JSON.stringify({
-                customer: 'cus_000006240212', // Cliente padrão do seu sistema
+                name: "Usuário Verifica Plus",
+                email: "cliente.plus@verificabet.com" // Dados genéricos padrão
+            })
+        });
+
+        const dadosCliente = await responseCliente.json();
+       
+        // Pega o ID do cliente que acabou de ser criado na hora
+        const idClienteNovo = dadosCliente.id;
+
+        if (!idClienteNovo) {
+            return res.status(400).json({ error: 'Erro ao criar cliente automático no Asaas' });
+        }
+
+        // PASSO 2: CRIA A COBRANÇA PIX USANDO O CLIENTE NOVO
+        const responseCobranca = await fetch('https://asaas.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'access_token': ASAAS_KEY
+            },
+            body: JSON.stringify({
+                customer: idClienteNovo, // Usa o cliente que o robô criou acima
                 billingType: 'PIX',
                 value: valor,
                 dueDate: new Date(Date.now() + 86400000).toISOString().split('T')[0], // Expira em 24h
@@ -43,7 +63,7 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: dadosCobranca.errors });
         }
 
-        // 2. Busca o QR Code e o código Copia e Cola desse Pix gerado
+        // PASSO 3: BUSCA O QR CODE DO PIX
         const responsePix = await fetch(`https://asaas.com/${dadosCobranca.id}/pixQrCode`, {
             method: 'GET',
             headers: { 'access_token': ASAAS_KEY }
@@ -51,7 +71,7 @@ export default async function handler(req, res) {
 
         const dadosPix = await responsePix.json();
 
-        // Devolve os dados do Pix mascarados para o seu site usar com segurança
+        // Devolve o QR Code perfeitamente pronto para a tela do usuário
         return res.status(200).json({
             idCobranca: dadosCobranca.id,
             payload: dadosPix.payload,
