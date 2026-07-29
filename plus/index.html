@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica Plus - Central Avançada do Apostador</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png?v=1">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0b0b0b; color: #fff; font-family: sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+       
+        /* Conteúdo de Fundo Borrado (Gera desejo de uso no cliente) */
+        .conteudo-fundo-completo { filter: blur(7px); pointer-events: none; user-select: none; max-width: 800px; margin: 0 auto; width: 100%; padding: 20px; }
+       
+        /* Módulos do Sistema */
+        .modulo-container { background: #121212; border: 1px solid #222; border-radius: 12px; padding: 25px; margin-bottom: 25px; text-align: center; }
+        .titulo-modulo { color: #ff9100; margin-bottom: 15px; font-size: 24px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .campo-pix { width: 100%; padding: 15px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; margin-bottom: 15px; font-family: monospace; resize: none; font-size: 13px; }
+        .btn-acao { width: 100%; padding: 14px; background: #ff9100; border: none; border-radius: 8px; color: #fff; font-weight: bold; font-size: 15px; cursor: pointer; margin-bottom: 10px; }
+        .btn-secundario { background: #222; border: 1px solid #333; color: #aaa; }
+
+        /* Tabela Métrica Ouro */
+        .tabela-ranking { width: 100%; border-collapse: collapse; margin-top: 15px; background: #161616; border-radius: 8px; overflow: hidden; font-size: 14px; }
+        .tabela-ranking th { background: #222; color: #ff9100; padding: 12px; text-align: left; font-weight: bold; }
+        .tabela-ranking td { padding: 12px; border-bottom: 1px solid #222; color: #ddd; }
+        .nota-badge { background: #ff9100; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+        .link-seguro { color: #00c853; font-weight: bold; text-decoration: none; border: 1px solid #00c853; padding: 4px 10px; border-radius: 4px; background: rgba(0,200,83,0.05); }
+
+        /* Módulo Educativo */
+        .grid-educativo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .card-educativo { background: #161616; border: 1px solid #252525; padding: 15px; border-radius: 8px; text-align: left; }
+        .card-educativo h4 { color: #ff9100; margin-bottom: 8px; font-size: 15px; }
+        .card-educativo p { color: #aaa; font-size: 12px; line-height: 1.5; }
+
+        /* Tela de Bloqueio Externa (Paywall) */
+        .bloqueio-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 15px; }
+        .bloqueio-card { background: #121212; border: 2px solid #ff9100; border-radius: 12px; padding: 30px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 0 25px rgba(255, 145, 0, 0.25); }
+        .bloqueio-card h2 { color: #fff; font-size: 22px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .bloqueio-card p { color: #aaa; font-size: 14px; line-height: 1.5; margin-bottom: 25px; }
+        .alerta-texto { color: #ff5252; font-weight: bold; }
+
+        /* Planos de Assinatura */
+        .plano-opcao { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; text-decoration: none; color: #fff; }
+        .plano-opcao:hover { border-color: #ff9100; background: rgba(255, 145, 0, 0.05); }
+        .plano-info { text-align: left; }
+        .plano-nome { font-weight: bold; font-size: 14px; margin-bottom: 4px; }
+        .plano-detalhe { font-size: 12px; color: #777; }
+        .plano-preco { font-weight: bold; color: #ff9100; font-size: 16px; }
+        .bloqueio-footer { font-size: 11px; color: #555; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- FERRAMENTAS DO PLUS (SÓ DESTRAVAM APÓS O PIX) -->
+    <div class="conteudo-fundo-completo">
+       
+        <!-- Scanner Pix -->
+        <div class="modulo-container">
+            <h1 class="titulo-modulo">🛡️ Scanner de Pix Antigolpe</h1>
+            <p style="margin-bottom: 15px; color: #aaa; font-size: 14px;">Identifique o CNPJ real e o banco da plataforma de apostas antes de transferir.</p>
+            <textarea class="campo-pix" rows="3" placeholder="Cole aqui o código Pix Copia e Cola da sua casa de apostas..."></textarea>
+            <button class="btn-acao">Rastrear Transação e Buscar CNPJ</button>
+            <button class="btn-acao btn-secundario">📷 Abrir Câmera para Escanear QR Code</button>
+        </div>
+
+        <!-- Métrica Ouro Top 10 -->
+        <div class="modulo-container">
+            <h2 class="titulo-modulo" style="color: #fff;">📊 Painel Métrica Ouro: Top 10 Redirecionamentos</h2>
+            <table class="tabela-ranking">
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Plataforma</th>
+                        <th>Saque Pix</th>
+                        <th>Licença</th>
+                        <th>Acesso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1º</strong></td>
+                        <td>Plataforma Alpha</td>
+                        <td><span class="nota-badge">9.8</span> Instante</td>
+                        <td>🟢 Federal SPA</td>
+                        <td><a href="#" class="link-seguro">Link Seguro 🔗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2º</strong></td>
+                        <td>Banca Beta</td>
+                        <td><span class="nota-badge">9.5</span> &lt; 5 min</td>
+                        <td>🟢 Federal SPA</td>
+                        <td><a href="#" class="link-seguro">Link Seguro 🔗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3º</strong></td>
+                        <td>Sorte Gama</td>
+                        <td><span class="nota-badge">9.2</span> &lt; 10 min</td>
+                        <td>🟡 Estadual Válida</td>
+                        <td><a href="#" class="link-seguro">Link Seguro 🔗</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Educativo -->
+        <div class="modulo-container" style="margin-bottom: 50px;">
+            <h2 class="titulo-modulo" style="color: #fff;">🧠 Guia Prático de Gestão Matemática</h2>
+            <div class="grid-educativo">
+                <div class="card-educativo">
+                    <h4>1. Gestão de Banca Rígida</h4>
+                    <p>Divida seu capital em 100 partes. Nunca coloque mais de 1% a 2% em uma única jogada.</p>
+                </div>
+                <div class="card-educativo">
+                    <h4>2. Bloqueio Antivício</h4>
+                    <p>Estipule uma meta de ganho e limite de perda por dia. Bateu a meta? Feche o site.</p>
+                </div>
+                <div class="card-educativo">
+                    <h4>3. Termos Abusivos (Rollover)</h4>
+                    <p>Cuidado com bônus muito altos que travam o seu saldo para saque.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POP-UP QUE CHAMA O ARQUIVO DA API QUE CRIAMOS -->
+    <div class="bloqueio-overlay">
+        <div class="bloqueio-card">
+            <h2>🔒 Área Restrita: Verifica Plus</h2>
+            <p>Mais de <span class="alerta-texto">80% das plataformas falsas</span> usam CNPJs fantasmas para prender seu dinheiro. Ative seu acesso com segurança.</p>
+           
+            <div id="conteudo-bloqueio-dinamico">
+                <div id="lista-planos">
+                    <a href="#" class="plano-opcao" onclick="gerarPixReal(9.90, '7 Dias')">
+                        <div class="plano-info">
+                            <div class="plano-nome">🟩 Acesso por 7 Dias</div>
+                            <div class="plano-detalhe">Ideal para verificar uma banca específica</div>
+                        </div>
+                        <div class="plano-preco">R$ 9,90</div>
+                    </a>
+
+                    <a href="#" class="plano-opcao" onclick="gerarPixReal(14.90, '15 Dias')">
+                        <div class="plano-info">
+                            <div class="plano-nome">🟨 Acesso por 15 Dias</div>
+                            <div class="plano-detalhe">Mais proteção nas semanas de grandes jogos</div>
+                        </div>
+                        <div class="plano-preco">R$ 14,90</div>
+                    </a>
+
+                    <a href="#" class="plano-opcao" onclick="gerarPixReal(19.90, 'Mensal')">
+                        <div class="plano-info">
+                            <div class="plano-nome">🟦 Assinatura Mensal (30 Dias)</div>
+                            <div class="plano-detalhe">Segurança contínua e links atualizados</div>
+                        </div>
+                        <div class="plano-preco">R$ 19,90</div>
+                    </a>
+                </div>
+            </div>
+            <p class="bloqueio-footer">Geração de cobrança segura integrada via API Asaas.</p>
+        </div>
+    </div>
+
+    <!-- CÓDIGO DO SCRIPT CORRIGIDO -->
+    <script>
+        async function gerarPixReal(valorPlano, nomePlano) {
+            const container = document.getElementById('conteudo-bloqueio-dinamico');
+            container.innerHTML = '<p style="color: #ff9100; margin: 20px 0; font-weight:bold;">Conectando ao Asaas... Aguarde.</p>';
+
+            try {
+                // Chama a API segura que criamos na pasta /api
+                const resposta = await fetch('/api/criar-cobranca', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ valor: valorPlano, nomePlano: nomePlano })
+                });
+
+                const dados = await resposta.json();
+
+                if (dados.error) {
+                    alert('Erro do gateway Asaas. Verifique suas credenciais.');
+                    window.location.reload();
+                    return;
+                }
+
+                // Coloca o QR Code real vindo do Asaas na tela do seu cliente
+                container.innerHTML = `
+                    <div style="margin: 20px 0;">
+                        <img src="data:image/png;base64,${dados.encodedImage}" style="width: 180px; height: 180px; border: 4px solid #fff; margin-bottom: 12px; border-radius:4px;" />
+                        <input type="text" value="${dados.payload}" id="inputCopiaCola" readonly style="width:100%; padding:10px; background:#222; border:1px solid #333; color:#fff; text-align:center; border-radius:4px; font-size:11px; margin-bottom:10px;" />
+                        <button onclick="copiarPixCodigo()" style="background:#00c853; color:#000; border:none; padding:8px 15px; font-weight:bold; border-radius:4px; cursor:pointer; width:100%;">📋 Copiar Código Pix</button>
+                    </div>
+                    <p style="color: #ff9100; font-size:12px; font-weight:bold;">⏳ Aguardando confirmação do pagamento...</p>
+                `;
+
+            } catch (err) {
+                alert('Erro na conexão com o servidor da Vercel.');
+                window.location.reload();
+            }
+        }
+
+        function copiarPixCodigo() {
+            const copyText = document.getElementById("inputCopiaCola");
+            copyText.select();
+            navigator.clipboard.writeText(copyText.value);
+            alert("Código Pix copiado!");
+        }
+    </script>
+</body>
+</html>
